@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://www.google.com;">
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- Prevenir Clickjacking -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"> <!-- Prevenir MIME Type Sniffing -->
+    <meta name="referrer" content="no-referrer"> <!-- Limitar información de referencia -->
+    <title>Instituto Domingo F. Sarmiento</title>
+    <link rel="preload" href="fonts/Roboto.css" as="style"> <!-- Preload para fuentes -->
+    <link rel="preload" href="fonts/fontawesome.css" as="style">
+    <link rel="stylesheet" href="style.css">
+    <link href="fonts/Roboto.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/fontawesome.css">
+    <style>
+        .scroll-to-top {
+            display: flex; /* Cambiado para centrar el contenido */
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px; /* Tamaño más grande */
+            height: 60px;
+            font-size: 24px; /* Fuente más grande */
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más destacada */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Animación */
+            opacity: 0; /* Oculto inicialmente */
+            visibility: hidden; /* Oculto inicialmente */
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1; /* Visible cuando se agrega la clase */
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+            transform: scale(1.1); /* Efecto de agrandamiento */
+        }
+
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .floating-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px; /* Tamaño ajustado */
+            height: 60px;
+            border-radius: 50%;
+            background-color: transparent; /* Fondo transparente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-button img {
+            width: 100%; /* Imagen ocupa todo el botón */
+            height: 100%;
+            border-radius: 50%; /* Redondear la imagen */
+            object-fit: cover; /* Ajustar la imagen al contenedor */
+        }
+
+        .floating-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="/imagenes/logo-es.png" alt="Logo principal del Instituto Domingo F. Sarmiento" class="logo-principal">
+                <img src="/imagenes/logo-ingles.png" alt="Logo del Sarmiento International School" class="logo-secundario">
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#institutoE">Instituto Domingo F. Sarmiento</a></li>
+                    <li><a href="#instituto">Sarmiento International School</a></li>
+                    <li><a href="#Nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="plataforma.html">Acceso Plataforma</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero-section">
+            <img src="imagenes/banner.jpeg" alt="Imagen principal del Instituto" class="hero-image" loading="lazy">
+        </div>
+    </header>
+
+    <!-- Nosotros -->
+    <section id="Nosotros" class="section institutional">
+        <div class="container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <div class="history-content">
+                <div class="history-text">
+                    <p><i class="fas fa-school icon-history" aria-hidden="true"></i> El Instituto Domingo Faustino Sarmiento fue fundado por la Sra. Ethel María Suárez de Melchiorre -más conocida como Sra. Gogo- en el año 1949. Comenzó a funcionar en un pequeño departamento frente a la estación de San Antonio de Padua y su objeto, en sus inicios, fue preparar alumnos para el ingreso al Secundario.</p>
+                    <p><i class="fas fa-map-marker-alt icon-history" aria-hidden="true"></i> En el año 1954 se compró el primer terreno en la calle Italia 1170 de la misma localidad, donde actualmente se erige el complejo educativo. El crecimiento fue sin prisa pero sin pausa, al compás de las necesidades de sus alumnos y de la comunidad, característica que se extiende hasta nuestros días.</p>
+                </div>
+                <div class="history-milestones">
+                    <div class="milestone">
+                        <i class="fas fa-calendar-alt milestone-icon" aria-hidden="true"></i>
+                        <span class="year">1949</span>
+                        <p>Fundación del Instituto</p>
+                    </div>
+                    <div class="milestone">
+                        <i class="fas fa-child milestone-icon" aria-hidden="true"></i>
+                        <span class="year">1955</span>
+                        <p>Creación del Jardín de Infantes</p>
+                    </div>
+                    <div class="milestone">
+                        <i class="fas fa-graduation-cap milestone-icon" aria-hidden="true"></i>
+                        <span class="year">1959</span>
+                        <p>Inicio del nivel Secundario</p>
+                    </div>
+                    <div class="milestone">
+                        <i class="fas fa-globe milestone-icon" aria-hidden="true"></i>
+                        <span class="year">1995</span>
+                        <p>Creación del Sarmiento International School</p>
+                    </div>
+                </div>
+            </div>
+            <div class="history-button">
+                <a href="historia.html" class="btn-action">Ver más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Instituto Domingo F. Sarmiento -->
+    <section id="institutoE" class="section section-institutional">
+        <div class="container">
+            <h2 class="section-title">Instituto Domingo F. Sarmiento</h2>
+            <p class="section-description">Descubre las modalidades educativas y actividades que ofrecemos para el desarrollo integral de nuestros estudiantes.</p>
+            <div class="subsection-grid">
+                <a href="nivel-inicial.html" class="subsection-card">
+                    <i class="fas fa-child icon" aria-hidden="true"></i>
+                    <h3>Nivel Inicial</h3>
+                    <p>Educación para los más pequeños.</p>
+                </a>
+                <a href="nivel-primario.html" class="subsection-card">
+                    <h3>Nivel Primario</h3>
+                    <p>Formación integral desde la infancia.</p>
+                </a>
+                <a href="nivel-secundario.html" class="subsection-card">
+                    <h3>Nivel Secundario</h3>
+                    <p>Preparación académica y personal.</p>
+                </a>
+                <a href="nivel-superior.html" class="subsection-card">
+                    <h3>Nivel Superior</h3>
+                    <p>Educación avanzada para el futuro.</p>
+                </a>
+                <a href="deportes.html" class="subsection-card">
+                    <h3>Deportes</h3>
+                    <p>Fomentamos el espíritu deportivo.</p>
+                </a>
+                <a href="informatica.html" class="subsection-card">
+                    <h3>Informática</h3>
+                    <p>Innovación y tecnología en la educación.</p>
+                </a>
+                <a href="musica.html" class="subsection-card">
+                    <h3>Música</h3>
+                    <p>Desarrollamos el talento artístico.</p>
+                </a>
+                <a href="solidaridad.html" class="subsection-card">
+                    <i class="fas fa-hands-helping icon" aria-hidden="true"></i>
+                    <h3>Solidaridad</h3>
+                    <p>Compromiso con la comunidad.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sarmiento International School -->
+    <section id="instituto" class="section section-international">
+        <div class="container">
+            <h2 class="section-title">Sarmiento International School</h2>
+            <p class="section-description">Ofrecemos una educación bilingüe y multicultural para preparar a nuestros estudiantes para un futuro global.</p>
+            <div class="subsection-grid">
+                <a href="kindergarten.html" class="subsection-card">
+                    <i class="fas fa-chalkboard-teacher icon" aria-hidden="true"></i>
+                    <h3>Kindergarten</h3>
+                    <p>Educación inicial bilingüe.</p>
+                </a>
+                <a href="primary-school.html" class="subsection-card">
+                    <i class="fas fa-book icon" aria-hidden="true"></i>
+                    <h3>Primary School</h3>
+                    <p>Formación integral en inglés y español.</p>
+                </a>
+                <a href="high-school.html" class="subsection-card">
+                    <i class="fas fa-graduation-cap icon" aria-hidden="true"></i>
+                    <h3>High School</h3>
+                    <p>Preparación para un futuro global.</p>
+                </a>
+                <a href="institucional.html" class="subsection-card">
+                    <h3>Institucional</h3>
+                    <p>Conoce nuestra misión y visión.</p>
+                </a>
+                <a href="objetivos.html" class="subsection-card">
+                    <h3>Objetivos</h3>
+                    <p>Metas educativas claras y alcanzables.</p>
+                </a>
+                <a href="estilo-ensenanza.html" class="subsection-card">
+                    <h3>Estilo de Enseñanza</h3>
+                    <p>Innovación y excelencia académica.</p>
+                </a>
+                <a href="extraprogramaticas.html" class="subsection-card">
+                    <h3>Extraprogramáticas</h3>
+                    <p>Actividades que enriquecen la experiencia educativa.</p>
+                </a>
+                <a href="comedor.html" class="subsection-card">
+                    <h3>Comedor</h3>
+                    <p>Alimentación saludable y balanceada.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.589013794411!2d-58.69999908477038!3d-34.6436899804496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc95434553ffff%3A0x8bd28d5d548f876d!2sItalia%201170%2C%20San%20Antonio%20de%20Padua%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1629990000000!5m2!1ses-419!2sar"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logos">
+                <img src="/imagenes/logo-es.png" alt="Logo principal del Instituto" class="footer-logo">
+                <img src="/imagenes/logo-ingles.png" alt="Logo del Sarmiento International School" class="footer-logo">
+            </div>
+            <div class="footer-info">
+                <p>Italia 1170 - San Antonio de Padua</p>
+                <p>(0220) 4820883 / 4823673</p>
+                <p><a href="mailto:sarmiento@sarmiento.esc.edu.ar">sarmiento@sarmiento.esc.edu.ar</a></p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#institutoE">Instituto Domingo F. Sarmiento</a></li>
+                    <li><a href="#instituto">Sarmiento International School</a></li>
+                    <li><a href="#Nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="plataforma.html">Acceso Plataforma</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Instituto Domingo F. Sarmiento. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <button class="scroll-to-top" aria-label="Volver arriba">↑</button>
+    <div class="floating-buttons">
+        <a href="https://wa.me/1234567890" target="_blank" class="floating-button" aria-label="WhatsApp" rel="noopener noreferrer">
+            <img src="/imagenes/wp.jpg" alt="WhatsApp Logo" loading="lazy">
+        </a>
+        </a>
+    </div>
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script>
+        // Seleccionar el botón
+        const scrollToTopButton = document.querySelector('.scroll-to-top');
+
+        // Mostrar/ocultar el botón según el scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollToTopButton.classList.add('visible'); // Agregar clase para mostrar
+            } else {
+                scrollToTopButton.classList.remove('visible'); // Quitar clase para ocultar
+            }
+        });
+
+        // Acción al hacer clic en el botón
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

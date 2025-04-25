@@ -1,0 +1,773 @@
+/* Variables y reset */
+:root {
+    --primary-blue: #1a4b84;
+    --primary-red: #b22234;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --background-light: #f8f9fa;
+    --spacing-unit: 1rem;
+    --transition: all 0.3s ease;
+    --shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+}
+
+/* Header Styles */
+.header {
+    background-color: var(--text-light);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-top {
+    padding: 1.5rem var(--spacing-unit);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container img {
+    height: 85px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-container img:hover {
+    transform: scale(1.1);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-blue);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-list a:hover {
+    color: var(--primary-blue);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover; /* Asegurar que la imagen cubra todo el espacio */
+}
+
+.hero-content {
+    z-index: 1; /* Asegurar que el texto esté encima de la imagen */
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Institutional Section */
+.section {
+    padding: calc(var(--spacing-unit) * 4) 0;
+}
+
+/* Animación para el título principal */
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    animation: fadeInSlideUp 1s ease-in-out;
+    transition: color 0.5s ease-in-out; /* Transición de color */
+}
+
+.section-title:hover {
+    color: var(--primary-red); /* Cambiar a rojo al pasar el mouse */
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.history-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.history-text {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.history-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.history-milestones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-unit);
+}
+
+.milestone {
+    background-color: var(--background-light);
+    padding: var(--spacing-unit);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.milestone .year {
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: calc(var(--spacing-unit) / 2);
+}
+
+/* Estilo para subsecciones */
+.subsection-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 tarjetas por fila */
+    gap: var(--spacing-unit);
+    margin-top: calc(var(--spacing-unit) * 2);
+    justify-content: center;
+}
+
+.subsection-grid > * {
+    grid-column: auto; /* Asegurar que todas las tarjetas se distribuyan uniformemente */
+}
+
+/* Estilo para subsecciones con interacción */
+.subsection-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-unit) * 2);
+    background-color: var(--text-light);
+    border: 1px solid var(--background-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transform: scale(0.85); /* Reducir tamaño al 85% */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    max-height: 200px; /* Altura inicial */
+    text-decoration: none; /* Quitar subrayado */
+    color: inherit; /* Mantener el color del texto */
+}
+
+.subsection-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.5s ease-in-out; /* Transición de color */
+}
+
+.subsection-card:hover h3 {
+    color: var(--primary-red); /* Cambiar a rojo al pasar el mouse */
+}
+
+.subsection-card p {
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.4;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.subsection-card:hover {
+    transform: scale(0.95); /* Ajustar tamaño al pasar el mouse */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Asegurar que no se subraye al pasar el mouse */
+    color: inherit; /* Mantener el color del texto al pasar el mouse */
+}
+
+.subsection-card.expanded {
+    max-height: 400px; /* Altura expandida */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.subsection-card.expanded p {
+    opacity: 1;
+}
+
+.subsection-card .icon {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-unit);
+    transition: transform 0.3s ease;
+}
+
+.subsection-card:hover .icon {
+    transform: scale(1.2);
+}
+
+.subsection-card .extra-info {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 75, 132, 0.9); /* Fondo azul con opacidad */
+    color: var(--text-light);
+    padding: var(--spacing-unit);
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    transition: bottom 0.3s ease;
+}
+
+.subsection-card:hover .extra-info {
+    bottom: 0;
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.btn-action:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para la sección Sarmiento International School */
+.section-international {
+    padding: calc(var(--spacing-unit) * 4) 0;
+    background-color: var(--text-light); /* Fondo blanco */
+    color: var(--text-dark);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--primary-red); /* Cambiar borde a rojo */
+}
+
+.section-international .section-title {
+    text-align: center;
+    color: var(--primary-red); /* Cambiar título a rojo */
+    font-size: 2rem;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    animation: fadeInSlideUp 1s ease-in-out;
+    transition: color 0.5s ease-in-out; /* Transición de color */
+}
+
+.section-international .section-title:hover {
+    color: var(--primary-blue); /* Cambiar a azul al pasar el mouse */
+}
+
+.section-international .subsection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    justify-content: center;
+    align-items: stretch;
+}
+
+.section-international .subsection-card {
+    background-color: var(--text-light);
+    border: 1px solid var(--primary-red); /* Cambiar borde a rojo */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: calc(var(--spacing-unit) * 2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.section-international .subsection-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.section-international .subsection-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+    opacity: 0.9;
+}
+
+.section-international .subsection-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-blue); /* Cambiar borde a azul */
+}
+
+.section-international .subsection-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-red); /* Cambiar barra superior a rojo */
+    transition: height 0.3s ease;
+}
+
+.section-international .subsection-card:hover::before {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-blue)); /* Gradiente invertido */
+    opacity: 0.1;
+}
+
+/* Estilo para la sección Instituto Domingo F. Sarmiento */
+.section-institutional {
+    padding: calc(var(--spacing-unit) * 4) 0;
+    background-color: var(--text-light); /* Fondo blanco */
+    color: var(--text-dark);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--primary-blue); /* Cambiar borde a azul */
+}
+
+.section-institutional .container {
+    text-align: center;
+}
+
+.section-institutional .section-title {
+    text-align: center;
+    color: var(--primary-blue); /* Cambiar título a azul */
+    font-size: 2rem;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    animation: fadeInSlideUp 1s ease-in-out;
+    transition: color 0.5s ease-in-out; /* Transición de color */
+}
+
+.section-institutional .section-title:hover {
+    color: var(--primary-red); /* Cambiar a rojo al pasar el mouse */
+}
+
+.section-institutional .subsection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    justify-content: center;
+    align-items: stretch;
+}
+
+.section-institutional .subsection-card {
+    background-color: var(--text-light);
+    border: 1px solid var(--primary-blue); /* Cambiar borde a azul */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: calc(var(--spacing-unit) * 2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.section-institutional .subsection-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.section-institutional .subsection-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+    opacity: 0.9;
+}
+
+.section-institutional .subsection-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-red); /* Cambiar borde a rojo */
+}
+
+.section-institutional .subsection-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-blue); /* Cambiar barra superior a azul */
+    transition: height 0.3s ease;
+}
+
+.section-institutional .subsection-card:hover::before {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-red)); /* Gradiente invertido */
+    opacity: 0.1;
+}
+
+/* Estilo para tarjetas animadas */
+.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-unit) * 2);
+    background-color: var(--text-light);
+    border: 1px solid var(--background-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transform: scale(0.95);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.info-card:hover {
+    transform: scale(1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.info-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: var(--spacing-unit);
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.info-card:hover h3 {
+    color: var(--primary-red);
+}
+
+.info-card p {
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Estilo para la sección de deportes */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 2);
+    justify-content: center;
+    align-items: stretch;
+}
+
+.info-card {
+    background-color: var(--background-light);
+    border: 1px solid var(--primary-blue);
+    border-radius: 10px;
+    padding: calc(var(--spacing-unit) * 2);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.info-card p {
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.info-card ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    text-align: left;
+}
+
+.info-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para la sección de actividades extraprogramáticas */
+.timeline {
+    margin-top: 2rem;
+    border-left: 4px solid var(--primary-blue);
+    padding-left: 1.5rem;
+}
+
+.timeline-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-item h4 {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--text-light);
+}
+
+.timeline-item:last-child::before {
+    background-color: var(--primary-red);
+}
+
+.timeline-item ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Slider */
+.slider {
+    width: 25%; /* Reducir el tamaño al 50% */
+    margin: 20px auto; /* Centrar el slider */
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: var(--shadow); /* Sombra */
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    animation: slide 10s infinite; /* Animación automática */
+}
+
+.slider-image {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* Animación para el slider */
+@keyframes slide {
+    0%, 20% {
+        transform: translateX(0);
+    }
+    25%, 45% {
+        transform: translateX(-100%);
+    }
+    50%, 70% {
+        transform: translateX(-200%);
+    }
+    75%, 95% {
+        transform: translateX(-300%);
+    }
+    100% {
+        transform: translateX(-400%);
+    }
+}
+
+/* Footer */
+.footer {
+    background: var(--primary-blue);
+    color: var(--text-light);
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1.5rem;
+}
+
+.footer-logos {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.1);
+}
+
+.footer-info {
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-red);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.footer-social a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--primary-red);
+}
+
+.footer-bottom {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    text-align: center;
+}
+
+/* Botón "Volver arriba" */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background-color: var(--primary-red);
+}
+
+
